@@ -4,6 +4,16 @@
 echo UPDATING
 sudo -S <<< "password" apt-get update -y
 
+# VIM
+echo INSTALLING VIM
+sudo -S <<< "password" apt-get install vim -y
+
+# GIT
+echo INSTALLING GIT
+sudo -S <<< "password" apt-get install git -y
+echo INSTALLING GITFLOW
+sudo -S <<< "password" apt-get install git-flow -y
+
 # PHP7
 echo INSTALLING PHP7
 sudo -S <<< "password" apt-get install curl php-cli php-mbstring unzip -y
@@ -32,25 +42,13 @@ source ~/.bashrc
 source ~/.nvm/nvm.sh
 nvm use stable #installing a stable version of nodejs
 
-# VIM
-echo INSTALLING VIM
-sudo -S <<< "password" apt-get install vim -y
-
-# GIT
-echo INSTALLING GIT
-sudo -S <<< "password" apt-get install git -y
-
-# ZSH E OH-MY-ZSH
-echo INSTALLING ZSH
-sudo -S <<< "password" apt-get install zsh -y
-chsh -s $(which zsh)
-# installing oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-#logout from shell
-
 # Docker
 echo INSTALING DOCKER
-echo EMPTY FOR NOW
+sudo -S <<< "password" apt-get update
+sudo -S <<< "password" apt-get remove docker docker-engine docker.io
+sudo -S <<< "password" apt-get install docker.io
+sudo -S <<< "password" systemctl start docker
+sudo -S <<< "password" systemctl enable docker
 
 # HTOP
 echo INSTALING HTOP
@@ -67,4 +65,31 @@ sudo apt-get install sublime-text -y
 # to uninstall sublime
 # sudo -S <<< "password" apt-get remove sublime-text && sudo apt-get autoremove
 
+# VS CODE
+echo INSTALING VS CODE
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo -S <<< "password" install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+sudo -S <<< "password" sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
+sudo -S <<< "password" apt-get install apt-transport-https -y
+sudo -S <<< "password" apt-get update -y
+sudo -S <<< "password" apt-get install code -y # or code-insiders
+
+# TERMINATOR
+echo INSTALING TERMINATOR
+sudo -S <<< "password" add-apt-repository ppa:gnome-terminator -y
+sudo -S <<< "password" apt-get update -y
+sudo -S <<< "password" apt-get install terminator -y
+
+# MYSQL WORKBENCH
+echo INSTALING MYSQL WORKBENCH
+sudo -S <<< "password" apt update -y
+sudo -S <<< "password" apt install mysql-workbench -y
+
+# ZSH E OH-MY-ZSH
+echo INSTALLING ZSH
+sudo -S <<< "password" apt-get install zsh -y
+chsh -s $(which zsh)
+# installing oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#logout from shell
