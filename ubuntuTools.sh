@@ -16,6 +16,7 @@ sudo -S <<< "password" apt-get install git-flow -y
 
 # PHP7
 echo INSTALLING PHP7
+sudo -S <<< "password" apt-get install php -y
 sudo -S <<< "password" apt-get install curl php-cli php-mbstring unzip -y
 
 # composer
@@ -74,6 +75,7 @@ sudo -S <<< "password" sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyring
 sudo -S <<< "password" apt-get install apt-transport-https -y
 sudo -S <<< "password" apt-get update -y
 sudo -S <<< "password" apt-get install code -y # or code-insiders
+#sudo -S <<< "password" snap install code -y
 
 # TERMINATOR
 echo INSTALING TERMINATOR
@@ -93,3 +95,4 @@ chsh -s $(which zsh)
 # installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 #logout from shell
+echo PLEASE REBOOT YOU TERMINAL
