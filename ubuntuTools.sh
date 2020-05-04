@@ -2,22 +2,22 @@
 
 # UPDATE
 echo UPDATING
-sudo -S <<< "password" apt-get update -y
+apt-get update -y
 
 # VIM
 echo INSTALLING VIM
-sudo -S <<< "password" apt-get install vim -y
+apt-get install vim -y
 
 # GIT
 echo INSTALLING GIT
-sudo -S <<< "password" apt-get install git -y
+apt-get install git -y
 echo INSTALLING GITFLOW
-sudo -S <<< "password" apt-get install git-flow -y
+apt-get install git-flow -y
 
 # PHP7
 echo INSTALLING PHP7
-sudo -S <<< "password" apt-get install php -y
-sudo -S <<< "password" apt-get install curl php-cli php-mbstring unzip -y
+apt-get install php -y
+apt-get install curl php-cli php-mbstring unzip -y
 
 # composer
 echo INSTALLING COMPOSER
@@ -45,54 +45,59 @@ nvm use stable #installing a stable version of nodejs
 
 # Docker
 echo INSTALING DOCKER
-sudo -S <<< "password" apt-get update
-sudo -S <<< "password" apt-get remove docker docker-engine docker.io
-sudo -S <<< "password" apt-get install docker.io
-sudo -S <<< "password" systemctl start docker
-sudo -S <<< "password" systemctl enable docker
+apt-get update
+apt-get remove docker docker-engine docker.io
+apt-get install docker.io
+systemctl start docker
+systemctl enable docker
+
+# CTOP -> a contaimer manager
+echo INSTALING CTOP
+wget https://github.com/bcicen/ctop/releases/download/v0.7.3/ctop-0.7.3-linux-amd64 -O /usr/local/bin/ctop
+chmod +x /usr/local/bin/ctop
 
 # HTOP
 echo INSTALING HTOP
-sudo -S <<< "password" apt-get install htop
+apt-get install htop
 
 # SUBLIME TEXT
 echo INSTALING SUBLIME TEXT
-wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+apt-key add -
+tee /etc/apt/sources.list.d/sublime-text.list
 echo updating repository added
-sudo -S <<< "password" apt-get update -y
+apt-get update -y
 echo finally installing sublime
-sudo apt-get install sublime-text -y
+apt-get install sublime-text -y
 # to uninstall sublime
-# sudo -S <<< "password" apt-get remove sublime-text && sudo apt-get autoremove
+# apt-get autoremove
 
 # VS CODE
 echo INSTALING VS CODE
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo -S <<< "password" install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
-sudo -S <<< "password" sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+install -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-sudo -S <<< "password" apt-get install apt-transport-https -y
-sudo -S <<< "password" apt-get update -y
-sudo -S <<< "password" apt-get install code -y # or code-insiders
-#sudo -S <<< "password" snap install code -y
+apt-get install apt-transport-https -y
+apt-get update -y
+apt-get install code -y # or code-insiders
+# snap install code
 
 # TERMINATOR
 echo INSTALING TERMINATOR
-sudo -S <<< "password" add-apt-repository ppa:gnome-terminator -y
-sudo -S <<< "password" apt-get update -y
-sudo -S <<< "password" apt-get install terminator -y
+add-apt-repository ppa:gnome-terminator -y
+apt-get update -y
+apt-get install terminator -y
 
 # MYSQL WORKBENCH
 echo INSTALING MYSQL WORKBENCH
-sudo -S <<< "password" apt update -y
-sudo -S <<< "password" apt install mysql-workbench -y
+apt update -y
+apt install mysql-workbench -y
 
 # ZSH E OH-MY-ZSH
 echo INSTALLING ZSH
-sudo -S <<< "password" apt-get install zsh -y
+apt-get install zsh -y
 chsh -s $(which zsh)
-# installing oh-my-zsh
+installing oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 #logout from shell
 echo PLEASE REBOOT YOU TERMINAL
